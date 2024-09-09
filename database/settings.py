@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-1ee(u**kqwrmfqs#)(*2a07n1l2%@2#9vtg-@l^=owedo48jun
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -75,12 +75,10 @@ WSGI_APPLICATION = 'database.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+import dj_database_url
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(default='postgres://postgres:123@localhost:5432/PostgreSQL 16')
 }
 
 
@@ -122,7 +120,8 @@ STATIC_URL = 'static/'
 # myproject/settings.py
 
 import os
-
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Добавьте в конец файла
 MEDIA_URL = '/images/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
