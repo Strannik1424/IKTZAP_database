@@ -77,9 +77,28 @@ WSGI_APPLICATION = 'database.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 import dj_database_url
 
+# DATABASES = {
+#     'default': dj_database_url.config(default='postgres://postgres:123@localhost:5432/PostgreSQL16')
+# }
+
 DATABASES = {
-    'default': dj_database_url.config(default='postgres://postgres:123@localhost:5432/PostgreSQL 16')
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'iktzap',  # Замените на фактическое имя базы данных
+        'USER': 'iktzap_admin',  # Имя пользователя базы данных
+        'PASSWORD': 'admin',  # Пароль пользователя базы данных
+        'HOST': 'localhost',  # Адрес хоста базы данных
+        'PORT': '5432',  # Порт подключения к базе данных
+            
+    }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',  # Путь к файлу базы данных SQLite
+#     }
+# }
 
 
 # Password validation
@@ -104,9 +123,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
